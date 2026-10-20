@@ -28,10 +28,21 @@ This parser automatically:
 - Export to Excel
 - Web UI
 
+## Technical Challenge: Encrypted Specifications
+
+SolidWorks exports specifications via macro and **encrypts** the output files, which prevents standard parsing. 
+
+To solve this, I reverse-engineered the export format and implemented a **decryption layer** that:
+- Detects the encryption signature
+- Extracts the original XML/data structure
+- Bypasses the macro protection without modifying SolidWorks itself
+
+This allows the parser to read specification files that standard tools cannot open.
+
 ## Tech Stack
 
 - **Backend:** Python
-- **Frontend:** HTML, CSS, JavaScript
+- **Frontend:** HTML
 - **Data:** Excel / Word parsing (openpyxl, python-docx)
 - **Output:** Excel
 
